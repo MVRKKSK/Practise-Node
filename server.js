@@ -11,9 +11,13 @@ const server = http.createServer((req, res) => {
         case "/about":
             path += "about.html";
             break;
-        case "/404":
-            path += "404.html";
+        case "/about-me":
+           /*  res.statusCode = 301; */
+            res.setHeader("Location" , "/about");
+            res.end();
             break;
+        default :
+        path += "/404.html"
     }
 
     fs.readFile(path, ((err, data) => {
